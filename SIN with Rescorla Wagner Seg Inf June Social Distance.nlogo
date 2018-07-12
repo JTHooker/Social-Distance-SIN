@@ -172,8 +172,8 @@ to
 end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  if energy > 15 and count bicycles < ( initial_bicycles ) [ hatch Additional_Bikes fd ( - random drop ) set energy random 30 ]
-  end
+  ask bicycles with [ who = random (ticks + 1) ]   [ hatch 1 fd ( - random drop ) set energy random 30 ]
+end
 
 to
   go
@@ -432,7 +432,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-500.0
+50.0
 50
 1
 NIL

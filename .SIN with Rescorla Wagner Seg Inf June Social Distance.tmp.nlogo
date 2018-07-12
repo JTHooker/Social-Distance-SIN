@@ -1,4 +1,4 @@
-caturtles-own [ speed speed-limit speed-min energy collisionsbikes timenow vmax vmin saliencybike saliencysafety initialassociationstrength care newv memory
+turtles-own [ speed speed-limit speed-min energy collisionsbikes timenow vmax vmin saliencybike saliencysafety initialassociationstrength care newv memory
        saliencyopenroad newassociationstrength selfcapacity care_attitude crashed ]
 globals
 
@@ -47,7 +47,7 @@ to setup
     ask n-of initial_cars (patches with [pcolor = one-of [ grey green ]])
   [
     sprout 1
-      [ set breed cars set color white set shape "cirle" set speed .8
+      [ set breed cars set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
              set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency set care careattitude
           set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]
@@ -172,8 +172,8 @@ to
 end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  if energy > 15 and count bicycles < ( initial_bicycles ) [ hatch Additional_Bikes fd ( - random drop ) set energy random 30 ]
-  end
+  ask bicycles with [ who = random 50 ] [ hatch 1 fd ( - random drop ) set energy random 30 ]
+end
 
 to
   go
@@ -432,7 +432,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-500.0
+50.0
 50
 1
 NIL
