@@ -1,4 +1,4 @@
-turtles-own [ speed speed-limit speed-min energy collisionsbikes timenow vmax vmin saliencybike saliencysafety initialassociationstrength care newv memory
+turtles-own [ speed speed-limit speed-min energy collisionsbikes timenow vmax vmin saliencybike initialassociationstrength care newv memory
        saliencyopenroad newassociationstrength selfcapacity care_attitude crashed ]
 globals
 
@@ -49,7 +49,7 @@ to setup
     sprout 1
       [ set breed cars set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency set selfcapacity .05 set saliencyopenroad roadsaliency
         set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]
 
 ]
@@ -250,7 +250,6 @@ to calculatecarefactor
   set vmax maxv set vmin minv
   set saliencybike BicycleSaliency set Saliencyopenroad Roadsaliency set selfcapacity capacity
   if saliencybike > 1 [ set saliencybike 1 ]
-  if saliencysafety > 1 [ set saliencysafety 1 ]
   if saliencyopenroad > 1 [ set saliencyopenroad 1 ]
 end
 
@@ -345,7 +344,7 @@ to swapcarsforbikes
     ask one-of bicycles [ die ]
     ask one-of patches [ sprout-cars 1 [ set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude + ((random 50 )/ 10) set selfcapacity .05 set saliencyopenroad roadsaliency
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency set Care_attitude ( CareAttitude + (random 50 / 10 )) set selfcapacity .05 set saliencyopenroad roadsaliency
           set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]]]
 
 end
@@ -872,7 +871,7 @@ SWITCH
 244
 More_bikes
 More_bikes
-0
+1
 1
 -1000
 
