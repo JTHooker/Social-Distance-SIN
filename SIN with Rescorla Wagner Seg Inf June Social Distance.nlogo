@@ -327,7 +327,7 @@ to growinfrastructureovertime
 end
 
 to calculatemates
-  ifelse any? bicycles in-radius friendshipradius [ set mates (1 - (1 / sqrt count bicycles in-radius friendshipradius)) ] [ set mates 0 ]
+  ifelse any? bicycles in-radius friendshipradius [ set mates (CareAttitude + (1 - (1 / sqrt count bicycles in-radius friendshipradius)) / 2) ] [ set mates CareAttitude ]
   ;; set mates min-one-of bicycles [ distance myself ]
   ;;set mates bicycles with [ distance myself < friendshipradius ]
 end
