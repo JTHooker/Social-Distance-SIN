@@ -523,7 +523,7 @@ straycars
 straycars
 0
 100
-10.0
+2.0
 1
 1
 NIL
@@ -872,7 +872,7 @@ SWITCH
 244
 More_bikes
 More_bikes
-1
+0
 1
 -1000
 
