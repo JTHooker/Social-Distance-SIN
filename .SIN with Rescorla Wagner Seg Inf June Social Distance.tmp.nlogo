@@ -172,7 +172,7 @@ to
 end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  ask one-of bicycles  [ hatch 1 fd ( - random drop ) set energy random 30 ]
+  ask one-of bicycles [ hatch 1 fd ( - random drop ) set energy random 30 ]
 end
 
 to
@@ -206,13 +206,14 @@ to
     if speed > speed-limit  [ set speed speed-limit ]
     fd speed ]
     ]
-        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings conscious calculatemates ] ;;collide
-        ask bicycles [ bike-energy iceblock death turn morebikes hadacrash check-bicycles avoidbuildings bali ]
+        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings conscious  ] ;;collide
+        ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
     growpoints
     killpoints
     growinfrastructureovertime
+    morebikes
 
     tick
  end
@@ -686,7 +687,7 @@ Stray
 Stray
 0
 100
-50.0
+1.0
 1
 1
 NIL
@@ -1029,7 +1030,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-3.0
+0.0
 1
 1
 NIL

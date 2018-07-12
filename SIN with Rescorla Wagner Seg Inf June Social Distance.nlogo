@@ -206,7 +206,7 @@ to
     if speed > speed-limit  [ set speed speed-limit ]
     fd speed ]
     ]
-        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings conscious calculatemates ] ;;collide
+        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings conscious ] ;;collide
         ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
@@ -687,7 +687,7 @@ Stray
 Stray
 0
 100
-50.0
+1.0
 1
 1
 NIL
@@ -1030,7 +1030,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-3.0
+0.0
 1
 1
 NIL
