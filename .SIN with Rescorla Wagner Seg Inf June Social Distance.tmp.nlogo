@@ -134,10 +134,10 @@ to separate-pedestrians  ;; turtle procedure
     [ fd 1 separate-pedestrians ]
 end
 
-;to collide ;count collisions - collision risk reduces at rate proportional to newassociation strength
-;;  if speed > 0 and any? bicycles-on patch-here and (newassociationstrength * 10 ) < random 10  and pcolor = grey [ set collisionsbikes 1 set shape "star" ]
-;;  if not any? bicycles-on patch-here [ set collisionsbikes 0 set shape "circle" ]
-;;end
+to collide ;count collisions - collision risk reduces at rate proportional to newassociation strength
+  if speed > 0 and any? bicycles-on patch-here and (newassociationstrength * 10 ) < random 10  and pcolor = grey [ set collisionsbikes 1 set shape "star" ]
+  if not any? bicycles-on patch-here [ set collisionsbikes 0 set shape "circle" ]
+end
 
 
 to iceblock
@@ -158,21 +158,24 @@ to death
    if energy < 0 [ die ]
 end
 
-to max-turtles-cars
-  if count cars < (initial_cars )[ reproduce ]
-end
+;;to max-turtles-cars
+;;  if count cars < (initial_cars )[ reproduce ]
+;;end
 
 to morebikes
    if more [ reproducebicycles ]
 end
 
-to
-  reproduce
-  if energy > 15 [ hatch 1 fd ( - random drop ) set energy random 30 ]
-end
+
+
+
+;;to
+;;  reproduce
+;;  if energy > 15 [ hatch 1 fd ( - random drop ) set energy random 30 ]
+;;end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  ask one-of bicycles [ hatch 1 fd ( - random drop ) set energy random 30 ]
+  if any? bicycles [ ask one-of  [ hatch 1 fd ( - random drop ) set energy random 30 ]]
 end
 
 to
@@ -206,7 +209,7 @@ to
     if speed > speed-limit  [ set speed speed-limit ]
     fd speed ]
     ]
-        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings ] ;;collide
+        ask cars [ separate-cars death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings collide ]
         ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
@@ -214,7 +217,7 @@ to
     killpoints
     growinfrastructureovertime
     morebikes
-
+    swapcarsforbikes
     tick
  end
 
@@ -302,8 +305,7 @@ end
 to growpoints ;;increases the number of points of interest in the network that attract activi
   if Points_of_Interest > ( count points ) [
     ask n-of 1 patches with [ pcolor  = blue ]  [ sprout 1 [ set breed points set color yellow set size 1 set shape "cylinder" ]
-      ]
-      ]
+      ]]
 end
 
 to killpoints
@@ -332,6 +334,11 @@ to calculatemates
   ;;set mates bicycles with [ distance myself < friendshipradius ]
 end
 
+to swapcarsforbikes
+  if Less_cars = true [
+    ask one-of cars [ die ]
+  ]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 715
@@ -429,7 +436,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-200.0
+50.0
 50
 1
 NIL
@@ -474,7 +481,7 @@ energy-from-roads
 energy-from-roads
 0
 1
-0.99
+0.0
 .01
 1
 NIL
@@ -1026,7 +1033,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-0.0
+10.0
 1
 1
 NIL
@@ -1049,10 +1056,21 @@ MONITOR
 1026
 747
 Care Attitude
-mean [ care ] of cars
+mean [ care_attitude ] of cars
 5
 1
 11
+
+SWITCH
+599
+199
+709
+233
+Less_Cars
+Less_Cars
+0
+1
+-1000
 
 @#$#@#$#@
 ## WHAT IS IT?

@@ -172,7 +172,7 @@ to
 end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  ask one-of bicycles [ hatch 1 fd ( - random drop ) set energy random 30 ]
+  if any? bicycles [ ask one-of bicycles [ hatch 1 fd ( - random drop ) set energy random 30 ]]
 end
 
 to
@@ -429,7 +429,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-200.0
+50.0
 50
 1
 NIL
@@ -1026,7 +1026,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-0.0
+10.0
 1
 1
 NIL
@@ -1049,7 +1049,7 @@ MONITOR
 1026
 747
 Care Attitude
-mean [ care ] of cars
+mean [ care_attitude ] of cars
 5
 1
 11
