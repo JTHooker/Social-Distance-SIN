@@ -134,7 +134,7 @@ to separate-pedestrians  ;; turtle procedure
     [ fd 1 separate-pedestrians ]
 end
 
-;;to collide ;count collisions - collision risk reduces at rate proportional to newassociation strength
+;to collide ;count collisions - collision risk reduces at rate proportional to newassociation strength
 ;;  if speed > 0 and any? bicycles-on patch-here and (newassociationstrength * 10 ) < random 10  and pcolor = grey [ set collisionsbikes 1 set shape "star" ]
 ;;  if not any? bicycles-on patch-here [ set collisionsbikes 0 set shape "circle" ]
 ;;end
@@ -245,7 +245,7 @@ to calculatecarefactor
   if newv < vmin [ set newv vmin ]
   set newassociationstrength ( initialassociationstrength + newv )
   set vmax maxv set vmin minv
-  set saliencybike BicycleSaliency set Saliencyopenroad Roadsaliency  set selfcapacity capacity
+  set saliencybike BicycleSaliency set Saliencyopenroad Roadsaliency set selfcapacity capacity
   if saliencybike > 1 [ set saliencybike 1 ]
   if saliencysafety > 1 [ set saliencysafety 1 ]
   if saliencyopenroad > 1 [ set saliencyopenroad 1 ]
@@ -429,7 +429,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-2000.0
+200.0
 50
 1
 NIL
@@ -1026,7 +1026,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-10.0
+0.0
 1
 1
 NIL

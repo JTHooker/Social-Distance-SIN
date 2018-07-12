@@ -134,10 +134,10 @@ to separate-pedestrians  ;; turtle procedure
     [ fd 1 separate-pedestrians ]
 end
 
-;;to collide ;count collisions - collision risk reduces at rate proportional to newassociation strength
-;;  if speed > 0 and any? bicycles-on patch-here and (newassociationstrength * 10 ) < random 10  and pcolor = grey [ set collisionsbikes 1 set shape "star" ]
-;;  if not any? bicycles-on patch-here [ set collisionsbikes 0 set shape "circle" ]
-;;end
+to collide ;count collisions - collision risk reduces at rate proportional to newassociation strength
+  if speed > 0 and any? bicycles-on patch-here and (newassociationstrength * 10 ) < random 10  and pcolor = grey [ set collisionsbikes 1 set shape "star" ]
+  if not any? bicycles-on patch-here [ set collisionsbikes 0 set shape "circle" ]
+end
 
 
 to iceblock
@@ -206,7 +206,7 @@ to
     if speed > speed-limit  [ set speed speed-limit ]
     fd speed ]
     ]
-        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings ] ;;collide
+        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings collide ]
         ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
@@ -429,7 +429,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-2000.0
+200.0
 50
 1
 NIL
