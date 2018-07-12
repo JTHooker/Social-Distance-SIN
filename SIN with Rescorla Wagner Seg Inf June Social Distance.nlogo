@@ -206,7 +206,7 @@ to
     if speed > speed-limit  [ set speed speed-limit ]
     fd speed ]
     ]
-        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings conscious ] ;;collide
+        ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings ] ;;collide
         ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
@@ -245,7 +245,7 @@ to calculatecarefactor
   if newv < vmin [ set newv vmin ]
   set newassociationstrength ( initialassociationstrength + newv )
   set vmax maxv set vmin minv
-  set saliencybike BicycleSaliency set Saliencyopenroad Roadsaliency set Care_Attitude Careattitude set selfcapacity capacity
+  set saliencybike BicycleSaliency set Saliencyopenroad Roadsaliency set selfcapacity capacity
   if saliencybike > 1 [ set saliencybike 1 ]
   if saliencysafety > 1 [ set saliencysafety 1 ]
   if saliencyopenroad > 1 [ set saliencyopenroad 1 ]
@@ -327,15 +327,11 @@ to growinfrastructureovertime
 end
 
 to calculatemates
-  ifelse any? bicycles in-radius friendshipradius [ set mates (CareAttitude + (1 - (1 / sqrt count bicycles in-radius friendshipradius)) / 2) ] [ set mates CareAttitude ]
+  ifelse any? bicycles in-radius friendshipradius [ set Care_attitude (CareAttitude + (1 - (1 / sqrt count bicycles in-radius friendshipradius)) / 2 ) ] [ set Care_Attitude CareAttitude ]
   ;; set mates min-one-of bicycles [ distance myself ]
   ;;set mates bicycles with [ distance myself < friendshipradius ]
 end
 
-to conscious
- if mates < random 10 and speed != 0 and any? bicycles-on patch-here [ set collisionsbikes 1 set shape "star" ]
- if not any? bicycles-on patch-here [ set collisionsbikes 0 set shape "circle" ]
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
 715
@@ -433,7 +429,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-150.0
+2000.0
 50
 1
 NIL
@@ -1030,7 +1026,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-1.0
+0.0
 1
 1
 NIL
@@ -1048,10 +1044,10 @@ mean [ mates ] of cars
 11
 
 MONITOR
-973
-714
-1062
-759
+937
+702
+1026
+747
 Care Attitude
 mean [ care ] of cars
 5
