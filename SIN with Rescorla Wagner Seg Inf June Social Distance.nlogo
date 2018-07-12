@@ -1,4 +1,4 @@
-turtles-own [ speed speed-limit speed-min energy collisionsbikes timenow vmax vmin saliencybike saliencysafety initialassociationstrength care newv memory
+turtles-own [ speed speed-limit speed-min energy collisionsbikes timenow vmax vmin saliencybike initialassociationstrength care newv memory
        saliencyopenroad newassociationstrength selfcapacity care_attitude crashed ]
 globals
 
@@ -49,7 +49,7 @@ to setup
     sprout 1
       [ set breed cars set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency set selfcapacity .05 set saliencyopenroad roadsaliency
         set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]
 
 ]
@@ -250,7 +250,6 @@ to calculatecarefactor
   set vmax maxv set vmin minv
   set saliencybike BicycleSaliency set Saliencyopenroad Roadsaliency set selfcapacity capacity
   if saliencybike > 1 [ set saliencybike 1 ]
-  if saliencysafety > 1 [ set saliencysafety 1 ]
   if saliencyopenroad > 1 [ set saliencyopenroad 1 ]
 end
 
@@ -335,17 +334,17 @@ to calculatemates
 end
 
 to swapcarsforbikes
-  if Less_cars = true [
+  if Less_cars = true and count bicycles < 1001 [
     ask one-of cars [ die ]
     ask one-of patches [ sprout-bicycles 1 [ set speed .3 set size .8
       set speed-limit max_speed_bikes set speed-min .05 set energy random 100 set VRUdensity 0 set color black set shape "circle" set heading random 360 set crashed 0 ]]
   ]
 
-  if More_cars = true and count bicycles > 1 [
+  if More_cars = true and count bicycles > 1  [
     ask one-of bicycles [ die ]
     ask one-of patches [ sprout-cars 1 [ set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude + ((random 50 / 10 )) set selfcapacity .05 set saliencyopenroad roadsaliency
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency set Care_attitude ( CareAttitude + (random 50 / 100 )) set selfcapacity .05 set saliencyopenroad roadsaliency
           set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]]]
 
 end
@@ -818,7 +817,7 @@ Memoryspan
 Memoryspan
 0
 50
-10.0
+20.0
 1
 1
 NIL
@@ -872,7 +871,7 @@ SWITCH
 244
 More_bikes
 More_bikes
-0
+1
 1
 -1000
 
@@ -1045,7 +1044,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-10.0
+0.0
 1
 1
 NIL
@@ -1091,7 +1090,7 @@ SWITCH
 286
 More_Cars
 More_Cars
-1
+0
 1
 -1000
 
