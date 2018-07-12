@@ -180,7 +180,7 @@ end
 
 to
   go
-   if ticks >= 1280 [ stop ]
+  ;; if ticks >= 1280 [ stop ]
        if ticks > Origdest
    [
          ask cars [
@@ -598,10 +598,10 @@ mean [ vrudensity] of bicycles
 11
 
 MONITOR
-43
-375
-135
-420
+574
+159
+666
+204
 Bike Accidents
 count cars with [ collisionsbikes = 1 ]
 17
@@ -1080,7 +1080,7 @@ SWITCH
 332
 Less_Cars
 Less_Cars
-0
+1
 1
 -1000
 
@@ -1096,10 +1096,10 @@ More_Cars
 -1000
 
 MONITOR
-1065
-709
-1123
-754
+348
+425
+406
+470
 Vehicles
 count bicycles + count cars
 17
