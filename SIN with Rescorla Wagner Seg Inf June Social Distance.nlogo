@@ -49,7 +49,7 @@ to setup
     sprout 1
       [ set breed cars set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency set care careattitude
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency set care mates
           set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]
 
 ]
@@ -327,7 +327,7 @@ to growinfrastructureovertime
 end
 
 to calculatemates
-  set mates sqrt count bicycles in-radius friendshipradius
+  ifelse any? bicycles in-radius friendshipradius [ set mates (1 - (1 / sqrt count bicycles in-radius friendshipradius)) ] [ set mates 0 ]
   ;; set mates min-one-of bicycles [ distance myself ]
   ;;set mates bicycles with [ distance myself < friendshipradius ]
 end
@@ -433,7 +433,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-50.0
+150.0
 50
 1
 NIL
@@ -702,7 +702,7 @@ CareAttitude
 CareAttitude
 0
 1
-1.0
+0.5
 .01
 1
 NIL
@@ -1030,7 +1030,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-0.0
+1.0
 1
 1
 NIL
@@ -1044,6 +1044,17 @@ MONITOR
 Mates
 mean [ mates ] of cars
 1
+1
+11
+
+MONITOR
+973
+714
+1062
+759
+Care Attitude
+mean [ care ] of cars
+5
 1
 11
 
