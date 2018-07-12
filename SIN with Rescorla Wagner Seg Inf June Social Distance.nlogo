@@ -49,8 +49,8 @@ to setup
     sprout 1
       [ set breed cars set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency set care mates
-          set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency
+        set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]
 
 ]
   ; create bikes on green areas
@@ -163,7 +163,7 @@ end
 ;;end
 
 to morebikes
-   if more [ reproducebicycles ]
+   if more_bikes [ reproducebicycles ]
 end
 
 
@@ -341,11 +341,11 @@ to swapcarsforbikes
       set speed-limit max_speed_bikes set speed-min .05 set energy random 100 set VRUdensity 0 set color black set shape "circle" set heading random 360 set crashed 0 ]]
   ]
 
-  if More_cars = true [
+  if More_cars = true and count bicycles > 0 [
     ask one-of bicycles [ die ]
     ask one-of patches [ sprout-cars 1 [ set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency set care mates
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency
           set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]]]
 
 end
@@ -587,10 +587,10 @@ count cars
 11
 
 MONITOR
-498
-198
-579
-243
+624
+514
+705
+559
 VRU Density
 mean [ vrudensity] of bicycles
 2
@@ -842,8 +842,8 @@ HORIZONTAL
 SLIDER
 211
 309
-440
-342
+354
+343
 InitialV
 InitialV
 0
@@ -857,8 +857,8 @@ HORIZONTAL
 SWITCH
 577
 111
-680
-144
+700
+145
 Shade
 Shade
 1
@@ -866,12 +866,12 @@ Shade
 -1000
 
 SWITCH
-577
-152
-680
-185
-More
-More
+544
+210
+659
+244
+More_bikes
+More_bikes
 0
 1
 -1000
@@ -1037,10 +1037,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-509
-252
-681
-285
+368
+310
+493
+344
 Friendshipradius
 Friendshipradius
 0
@@ -1074,10 +1074,10 @@ mean [ care_attitude ] of cars
 11
 
 SWITCH
-593
-309
-703
-343
+545
+298
+659
+332
 Less_Cars
 Less_Cars
 1
@@ -1085,13 +1085,13 @@ Less_Cars
 -1000
 
 SWITCH
-468
-310
-581
-344
+545
+252
+658
+286
 More_Cars
 More_Cars
-0
+1
 1
 -1000
 
