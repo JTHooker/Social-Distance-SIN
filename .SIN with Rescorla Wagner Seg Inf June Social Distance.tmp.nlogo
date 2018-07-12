@@ -172,7 +172,7 @@ to
 end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  ask bicycles with [ who = random 50 ] [ hatch 1 fd ( - random drop ) set energy random 30 ]
+  ask one-of bicycles  [ hatch 1 fd ( - random drop ) set energy random 30 ]
 end
 
 to

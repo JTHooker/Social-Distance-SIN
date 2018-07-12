@@ -172,7 +172,7 @@ to
 end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  ask bicycles with [ who = random (ticks + 1) ]   [ hatch 1 fd ( - random drop ) set energy random 30 ]
+  ask one-of bicycles [ hatch 1 fd ( - random drop ) set energy random 30 ]
 end
 
 to
@@ -207,12 +207,13 @@ to
     fd speed ]
     ]
         ask cars [ separate-cars max-turtles-cars  death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings conscious calculatemates ] ;;collide
-        ask bicycles [ bike-energy iceblock death turn morebikes hadacrash check-bicycles avoidbuildings bali ]
+        ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
     growpoints
     killpoints
     growinfrastructureovertime
+    morebikes
 
     tick
  end
