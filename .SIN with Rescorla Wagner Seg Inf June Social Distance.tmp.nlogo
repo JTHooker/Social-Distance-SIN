@@ -175,7 +175,7 @@ end
 ;;end
 
 to reproducebicycles ;;limit the number of bicycles in the system
-  if any? bicycles [ ask one-of  [ hatch 1 fd ( - random drop ) set energy random 30 ]]
+  if any? bicycles [ ask one-of bicycles [ hatch 1 fd ( - random drop ) set energy random 30 ]]
 end
 
 to
@@ -337,8 +337,20 @@ end
 to swapcarsforbikes
   if Less_cars = true [
     ask one-of cars [ die ]
+    ask one-of patches [ sprout-bicycles 1 [ set speed .3 set size .8
+      set speed-limit max_speed_bikes set speed-min .05 set energy random 100 set VRUdensity 0 set color black set shape "circle" set heading random 360 set crashed 0 ]]
   ]
+
+  if More_cars = true [
+    ask one-of bicycles [ die ]
+    ask one-of patches [ sprout-cars 1 [ set color white set shape "circle" set speed .8
+          set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude set selfcapacity .05 set saliencyopenroad roadsaliency set care mates
+          set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]]]
+
 end
+
+
 @#$#@#$#@
 GRAPHICS-WINDOW
 715
@@ -496,7 +508,7 @@ car-on-pedestrian
 car-on-pedestrian
 -10
 0
-0.0
+-0.03
 .01
 1
 NIL
@@ -586,10 +598,10 @@ mean [ vrudensity] of bicycles
 11
 
 MONITOR
-496
-305
-588
-350
+43
+375
+135
+420
 Bike Accidents
 count cars with [ collisionsbikes = 1 ]
 17
@@ -690,7 +702,7 @@ Stray
 Stray
 0
 100
-1.0
+0.0
 1
 1
 NIL
@@ -1062,12 +1074,23 @@ mean [ care_attitude ] of cars
 11
 
 SWITCH
-599
-199
-709
-233
+593
+309
+703
+343
 Less_Cars
 Less_Cars
+1
+1
+-1000
+
+SWITCH
+468
+310
+581
+344
+More_Cars
+More_Cars
 0
 1
 -1000
