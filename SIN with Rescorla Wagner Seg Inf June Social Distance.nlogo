@@ -1080,7 +1080,7 @@ SWITCH
 332
 Less_Cars
 Less_Cars
-1
+0
 1
 -1000
 
@@ -1091,9 +1091,20 @@ SWITCH
 286
 More_Cars
 More_Cars
-0
+1
 1
 -1000
+
+MONITOR
+1065
+709
+1123
+754
+Vehicles
+count bicycles + count cars
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?

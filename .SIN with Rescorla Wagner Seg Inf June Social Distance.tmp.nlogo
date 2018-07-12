@@ -345,7 +345,7 @@ to swapcarsforbikes
     ask one-of bicycles [ die ]
     ask one-of patches [ sprout-cars 1 [ set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
-             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude +set selfcapacity .05 set saliencyopenroad roadsaliency
+             set timenow 0 set vmax maxv set vmin minv set saliencybike BicycleSaliency  set saliencysafety Care_attitude + ((random 50 )/ 10) set selfcapacity .05 set saliencyopenroad roadsaliency
           set initialassociationstrength initialv set newassociationstrength initialv set memory memoryspan  set timenow random memoryspan ]]]
 
 end
@@ -378,6 +378,17 @@ GRAPHICS-WINDOW
 1
 ticks
 30.0
+
+MONITOR
+0
+0
+0
+0
+NIL
+NIL
+17
+1
+11
 
 BUTTON
 7
@@ -1080,7 +1091,7 @@ SWITCH
 332
 Less_Cars
 Less_Cars
-0
+1
 1
 -1000
 
@@ -1091,7 +1102,7 @@ SWITCH
 286
 More_Cars
 More_Cars
-1
+0
 1
 -1000
 
