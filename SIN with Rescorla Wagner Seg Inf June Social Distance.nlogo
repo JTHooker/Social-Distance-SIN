@@ -163,7 +163,7 @@ end
 ;;end
 
 to morebikes
-   if more_bikes [ reproducebicycles ]
+   if more_bikes and count bicycles <= 1000 [ reproducebicycles ]
 end
 
 
@@ -350,7 +350,7 @@ to swapcarsforbikes
 end
 
 to coallesce
-  if VRUdensity < Local_Density [ move-to one-of other bicycles ]
+  if VRUdensity < Local_Density and DensityTrigger > random 1000 [ move-to one-of other bicycles fd 5 ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -688,7 +688,7 @@ Drop
 Drop
 0
 65
-4.0
+10.0
 1
 1
 NIL
@@ -703,7 +703,7 @@ Stray
 Stray
 0
 100
-17.0
+0.0
 1
 1
 NIL
@@ -819,7 +819,7 @@ Memoryspan
 Memoryspan
 0
 50
-0.0
+15.0
 1
 1
 NIL
@@ -994,7 +994,7 @@ Points_of_Interest
 Points_of_Interest
 1
 500
-50.0
+5.0
 1
 1
 NIL
@@ -1012,10 +1012,10 @@ count bicycles with [ color = blue ]
 13
 
 SWITCH
-231
-705
-392
-738
+202
+703
+363
+736
 Growinfrastructure
 Growinfrastructure
 1
@@ -1081,7 +1081,7 @@ SWITCH
 332
 Less_Cars
 Less_Cars
-0
+1
 1
 -1000
 
@@ -1116,8 +1116,23 @@ Local_Density
 Local_Density
 1
 2
-1.1
+1.5
 .01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+203
+747
+376
+781
+DensityTrigger
+DensityTrigger
+0
+100
+11.0
+1
 1
 NIL
 HORIZONTAL
