@@ -350,7 +350,8 @@ to swapcarsforbikes
 end
 
 to coallesce
-  if VRUdensity < Local_Density and DensityTrigger > random 1000 [ move-to one-of other bicycles fd 5 ]
+  if VRUdensity < Local_Density and DensityTrigger > random 1000 [ die ]
+  ask one-of bicycles [ hatch 1 fd -5 ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
