@@ -334,13 +334,13 @@ to calculatemates
 end
 
 to swapcarsforbikes
-  if Less_cars = true [
+  if Less_cars = true and count bicycles < 1001 a[
     ask one-of cars [ die ]
     ask one-of patches [ sprout-bicycles 1 [ set speed .3 set size .8
       set speed-limit max_speed_bikes set speed-min .05 set energy random 100 set VRUdensity 0 set color black set shape "circle" set heading random 360 set crashed 0 ]]
   ]
 
-  if More_cars = true and count bicycles > 1 and count bicycles < 1001 [
+  if More_cars = true and count bicycles > 1  [
     ask one-of bicycles [ die ]
     ask one-of patches [ sprout-cars 1 [ set color white set shape "circle" set speed .8
           set speed-limit max_speed_cars set speed-min 0  set energy random 30 set heading one-of [ 0 90 180 270 ]  set collisionsbikes 0
@@ -507,7 +507,7 @@ car-on-pedestrian
 car-on-pedestrian
 -10
 0
-0.0
+-4.38
 .01
 1
 NIL
@@ -817,7 +817,7 @@ Memoryspan
 Memoryspan
 0
 50
-10.0
+0.0
 1
 1
 NIL
@@ -871,7 +871,7 @@ SWITCH
 244
 More_bikes
 More_bikes
-1
+0
 1
 -1000
 
@@ -1044,7 +1044,7 @@ Friendshipradius
 Friendshipradius
 0
 20
-10.0
+0.0
 1
 1
 NIL
@@ -1079,7 +1079,7 @@ SWITCH
 332
 Less_Cars
 Less_Cars
-1
+0
 1
 -1000
 
@@ -1090,7 +1090,7 @@ SWITCH
 286
 More_Cars
 More_Cars
-0
+1
 1
 -1000
 
