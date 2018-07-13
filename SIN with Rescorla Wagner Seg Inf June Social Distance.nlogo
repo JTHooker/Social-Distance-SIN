@@ -210,7 +210,7 @@ to
     fd speed ]
     ]
         ask cars [ separate-cars death turntoo calculatecarefactor remember resetinitial colour tracker avoidbuildings collide ]
-        ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali ]
+        ask bicycles [ bike-energy iceblock death turn hadacrash check-bicycles avoidbuildings bali coallesce ]
         ask planners [ maketracks avoidbuildings ]
     changenetwork
     growpoints
@@ -349,7 +349,9 @@ to swapcarsforbikes
 
 end
 
-
+to coallesce
+  if VRUdensity < Local_Density [ move-to one-of other bicycles ]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 715
@@ -507,7 +509,7 @@ car-on-pedestrian
 car-on-pedestrian
 -10
 0
--4.38
+0.0
 .01
 1
 NIL
@@ -686,7 +688,7 @@ Drop
 Drop
 0
 65
-50.0
+4.0
 1
 1
 NIL
@@ -701,7 +703,7 @@ Stray
 Stray
 0
 100
-0.0
+17.0
 1
 1
 NIL
@@ -1104,6 +1106,21 @@ count bicycles + count cars
 17
 1
 11
+
+SLIDER
+15
+747
+188
+781
+Local_Density
+Local_Density
+1
+2
+1.1
+.01
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
