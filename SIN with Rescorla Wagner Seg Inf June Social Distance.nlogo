@@ -435,7 +435,7 @@ Initial_cars
 Initial_cars
 0
 5000
-2000.0
+500.0
 250
 1
 NIL
@@ -465,7 +465,7 @@ Max_Speed_Cars
 Max_Speed_Cars
 0
 1
-1.0
+0.5
 .1
 1
 NIL
@@ -510,7 +510,7 @@ car-on-pedestrian
 car-on-pedestrian
 -10
 0
-0.0
+-0.26
 .01
 1
 NIL
@@ -704,7 +704,7 @@ Stray
 Stray
 0
 100
-6.0
+4.0
 1
 1
 NIL
@@ -874,7 +874,7 @@ SWITCH
 243
 More_bikes
 More_bikes
-1
+0
 1
 -1000
 
@@ -1082,7 +1082,7 @@ SWITCH
 331
 Less_Cars
 Less_Cars
-1
+0
 1
 -1000
 
@@ -1546,7 +1546,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.3
+NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
