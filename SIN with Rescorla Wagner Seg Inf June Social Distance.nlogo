@@ -450,7 +450,7 @@ Initial_bicycles
 Initial_bicycles
 0
 2000
-50.0
+900.0
 50
 1
 NIL
@@ -505,7 +505,7 @@ SLIDER
 9
 104
 179
-138
+137
 car-on-pedestrian
 car-on-pedestrian
 -10
@@ -845,7 +845,7 @@ SLIDER
 211
 309
 354
-343
+342
 InitialV
 InitialV
 0
@@ -860,7 +860,7 @@ SWITCH
 577
 111
 700
-145
+144
 Shade
 Shade
 1
@@ -871,7 +871,7 @@ SWITCH
 544
 210
 659
-244
+243
 More_bikes
 More_bikes
 1
@@ -913,7 +913,7 @@ Network
 Network
 0
 12936
-123.0
+3000.0
 100
 1
 NIL
@@ -1042,7 +1042,7 @@ SLIDER
 368
 310
 493
-344
+343
 Friendshipradius
 Friendshipradius
 0
@@ -1079,7 +1079,7 @@ SWITCH
 545
 298
 659
-332
+331
 Less_Cars
 Less_Cars
 1
@@ -1090,7 +1090,7 @@ SWITCH
 545
 252
 658
-286
+285
 More_Cars
 More_Cars
 0
@@ -1112,7 +1112,7 @@ SLIDER
 15
 747
 188
-781
+780
 Local_Density
 Local_Density
 1
@@ -1127,7 +1127,7 @@ SLIDER
 203
 747
 376
-781
+780
 DensityTrigger
 DensityTrigger
 0
